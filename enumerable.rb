@@ -25,7 +25,13 @@ module MyEnumerable
   def any?
     return true unless block_given?
 
-    each { |e| return true if yield(e)}
+    each { |e| return true if yield(e) }
     false
+  end
+
+  def filter
+    array = []
+    each { |e| array.push(e) if yield(e) }
+    array
   end
 end
