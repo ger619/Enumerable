@@ -21,4 +21,11 @@ module MyEnumerable
     each { |e| return false unless yield(e) }
     true
   end
+
+  def any?
+    return true unless block_given?
+
+    each { |e| return true if yield(e)}
+    false
+  end
 end
